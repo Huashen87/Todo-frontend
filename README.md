@@ -1,1 +1,3 @@
-# React GraphQL Template
+# Todo List
+
+Just a normal todolist project
