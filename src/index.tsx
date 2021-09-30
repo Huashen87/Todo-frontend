@@ -3,6 +3,9 @@ import App from './App';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client';
 
+import 'semantic-ui-css/semantic.min.css';
+import './styles.css';
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:5000/graphql',
   credentials: 'same-origin',

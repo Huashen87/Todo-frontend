@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  margin: 20px auto;
+}
+
+.check-box {
+  text-align: center;
+  margin: auto 20px;
+  transform: scale(1.5);
+}
