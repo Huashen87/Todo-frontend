@@ -1,3 +1,3 @@
 # English Note
 
-It;s a simple english note application.
+It's a simple english note application.
