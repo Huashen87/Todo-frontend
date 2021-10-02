@@ -1,0 +1,3 @@
+mutation ToggleVocabularyMark($en: String!) {
+  toggleVocabularyMark(en: $en)
+}

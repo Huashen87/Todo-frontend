@@ -1,0 +1,3 @@
+mutation DeleteVocabulary($vocabularies: [String!]!) {
+  deleteVocabularies(vocabularies: $vocabularies)
+}

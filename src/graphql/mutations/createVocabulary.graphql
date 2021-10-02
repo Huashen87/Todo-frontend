@@ -1,0 +1,11 @@
+mutation CreateVocabulary($en: String!, $ch: String!, $sentence: String!) {
+  createVocabulary(en: $en, ch: $ch, sentence: $sentence) {
+    en
+    ch
+    sentence
+    isMarked
+    counter
+    createAt
+    updateAt
+  }
+}

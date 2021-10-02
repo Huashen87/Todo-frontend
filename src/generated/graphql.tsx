@@ -19,284 +19,255 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createTodo: Todo;
-  updateTodo: Maybe<Todo>;
-  toggleTodo: Scalars['Boolean'];
-  deleteTodo: Scalars['Boolean'];
-  clearTodo: Scalars['Boolean'];
+  createVocabulary: Vocabulary;
+  updateVocabulary: Maybe<Vocabulary>;
+  toggleVocabularyMark: Scalars['Boolean'];
+  deleteVocabularies: Scalars['Boolean'];
 };
 
 
-export type MutationCreateTodoArgs = {
-  content: Scalars['String'];
-  title: Scalars['String'];
+export type MutationCreateVocabularyArgs = {
+  sentence: Scalars['String'];
+  ch: Scalars['String'];
+  en: Scalars['String'];
 };
 
 
-export type MutationUpdateTodoArgs = {
-  content: Scalars['String'];
-  title: Scalars['String'];
-  id: Scalars['ID'];
+export type MutationUpdateVocabularyArgs = {
+  sentence: Scalars['String'];
+  ch: Scalars['String'];
+  en: Scalars['String'];
 };
 
 
-export type MutationToggleTodoArgs = {
-  id: Scalars['ID'];
+export type MutationToggleVocabularyMarkArgs = {
+  en: Scalars['String'];
 };
 
 
-export type MutationDeleteTodoArgs = {
-  id: Scalars['ID'];
+export type MutationDeleteVocabulariesArgs = {
+  vocabularies: Array<Scalars['String']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  todos: Array<Todo>;
-  todo: Maybe<Todo>;
+  vocabularies: Array<Vocabulary>;
+  vocabulary: Maybe<Vocabulary>;
 };
 
 
-export type QueryTodoArgs = {
-  id: Scalars['ID'];
+export type QueryVocabularyArgs = {
+  en: Scalars['String'];
 };
 
-export type Todo = {
-  __typename?: 'Todo';
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  content: Scalars['String'];
-  isDone: Scalars['Boolean'];
+export type Vocabulary = {
+  __typename?: 'Vocabulary';
+  en: Scalars['String'];
+  ch: Scalars['String'];
+  sentence: Scalars['String'];
+  isMarked: Scalars['Boolean'];
+  counter: Scalars['Int'];
   createAt: Scalars['DateTime'];
   updateAt: Scalars['DateTime'];
 };
 
-export type ClearTodoMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ClearTodoMutation = { __typename?: 'Mutation', clearTodo: boolean };
-
-export type CreateTodoMutationVariables = Exact<{
-  title: Scalars['String'];
-  content: Scalars['String'];
+export type CreateVocabularyMutationVariables = Exact<{
+  en: Scalars['String'];
+  ch: Scalars['String'];
+  sentence: Scalars['String'];
 }>;
 
 
-export type CreateTodoMutation = { __typename?: 'Mutation', createTodo: { __typename?: 'Todo', id: string, title: string, content: string, isDone: boolean, createAt: any, updateAt: any } };
+export type CreateVocabularyMutation = { __typename?: 'Mutation', createVocabulary: { __typename?: 'Vocabulary', en: string, ch: string, sentence: string, isMarked: boolean, counter: number, createAt: any, updateAt: any } };
 
-export type DeleteTodoMutationVariables = Exact<{
-  id: Scalars['ID'];
+export type DeleteVocabularyMutationVariables = Exact<{
+  vocabularies: Array<Scalars['String']> | Scalars['String'];
 }>;
 
 
-export type DeleteTodoMutation = { __typename?: 'Mutation', deleteTodo: boolean };
+export type DeleteVocabularyMutation = { __typename?: 'Mutation', deleteVocabularies: boolean };
 
-export type ToggleTodoMutationVariables = Exact<{
-  id: Scalars['ID'];
+export type ToggleVocabularyMarkMutationVariables = Exact<{
+  en: Scalars['String'];
 }>;
 
 
-export type ToggleTodoMutation = { __typename?: 'Mutation', toggleTodo: boolean };
+export type ToggleVocabularyMarkMutation = { __typename?: 'Mutation', toggleVocabularyMark: boolean };
 
-export type UpdateTodoMutationVariables = Exact<{
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  content: Scalars['String'];
+export type UpdateVocabularyMutationVariables = Exact<{
+  en: Scalars['String'];
+  ch: Scalars['String'];
+  sentence: Scalars['String'];
 }>;
 
 
-export type UpdateTodoMutation = { __typename?: 'Mutation', updateTodo: Maybe<{ __typename?: 'Todo', id: string, title: string, content: string, isDone: boolean, createAt: any, updateAt: any }> };
+export type UpdateVocabularyMutation = { __typename?: 'Mutation', updateVocabulary: Maybe<{ __typename?: 'Vocabulary', en: string, ch: string, sentence: string, isMarked: boolean, counter: number, createAt: any, updateAt: any }> };
 
-export type TodoQueryVariables = Exact<{
-  id: Scalars['ID'];
+export type VocabulariesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type VocabulariesQuery = { __typename?: 'Query', vocabularies: Array<{ __typename?: 'Vocabulary', en: string, ch: string, sentence: string, isMarked: boolean, counter: number, createAt: any, updateAt: any }> };
+
+export type VocabularyQueryVariables = Exact<{
+  en: Scalars['String'];
 }>;
 
 
-export type TodoQuery = { __typename?: 'Query', todo: Maybe<{ __typename?: 'Todo', id: string, title: string, content: string, isDone: boolean, createAt: any, updateAt: any }> };
-
-export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
+export type VocabularyQuery = { __typename?: 'Query', vocabulary: Maybe<{ __typename?: 'Vocabulary', en: string, ch: string, sentence: string, isMarked: boolean, counter: number, createAt: any, updateAt: any }> };
 
 
-export type TodosQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string, title: string, content: string, isDone: boolean, createAt: any, updateAt: any }> };
-
-
-export const ClearTodoDocument = gql`
-    mutation ClearTodo {
-  clearTodo
-}
-    `;
-export type ClearTodoMutationFn = Apollo.MutationFunction<ClearTodoMutation, ClearTodoMutationVariables>;
-
-/**
- * __useClearTodoMutation__
- *
- * To run a mutation, you first call `useClearTodoMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useClearTodoMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [clearTodoMutation, { data, loading, error }] = useClearTodoMutation({
- *   variables: {
- *   },
- * });
- */
-export function useClearTodoMutation(baseOptions?: Apollo.MutationHookOptions<ClearTodoMutation, ClearTodoMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ClearTodoMutation, ClearTodoMutationVariables>(ClearTodoDocument, options);
-      }
-export type ClearTodoMutationHookResult = ReturnType<typeof useClearTodoMutation>;
-export type ClearTodoMutationResult = Apollo.MutationResult<ClearTodoMutation>;
-export type ClearTodoMutationOptions = Apollo.BaseMutationOptions<ClearTodoMutation, ClearTodoMutationVariables>;
-export const CreateTodoDocument = gql`
-    mutation CreateTodo($title: String!, $content: String!) {
-  createTodo(title: $title, content: $content) {
-    id
-    title
-    content
-    isDone
+export const CreateVocabularyDocument = gql`
+    mutation CreateVocabulary($en: String!, $ch: String!, $sentence: String!) {
+  createVocabulary(en: $en, ch: $ch, sentence: $sentence) {
+    en
+    ch
+    sentence
+    isMarked
+    counter
     createAt
     updateAt
   }
 }
     `;
-export type CreateTodoMutationFn = Apollo.MutationFunction<CreateTodoMutation, CreateTodoMutationVariables>;
+export type CreateVocabularyMutationFn = Apollo.MutationFunction<CreateVocabularyMutation, CreateVocabularyMutationVariables>;
 
 /**
- * __useCreateTodoMutation__
+ * __useCreateVocabularyMutation__
  *
- * To run a mutation, you first call `useCreateTodoMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateTodoMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateVocabularyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateVocabularyMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createTodoMutation, { data, loading, error }] = useCreateTodoMutation({
+ * const [createVocabularyMutation, { data, loading, error }] = useCreateVocabularyMutation({
  *   variables: {
- *      title: // value for 'title'
- *      content: // value for 'content'
+ *      en: // value for 'en'
+ *      ch: // value for 'ch'
+ *      sentence: // value for 'sentence'
  *   },
  * });
  */
-export function useCreateTodoMutation(baseOptions?: Apollo.MutationHookOptions<CreateTodoMutation, CreateTodoMutationVariables>) {
+export function useCreateVocabularyMutation(baseOptions?: Apollo.MutationHookOptions<CreateVocabularyMutation, CreateVocabularyMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, options);
+        return Apollo.useMutation<CreateVocabularyMutation, CreateVocabularyMutationVariables>(CreateVocabularyDocument, options);
       }
-export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutation>;
-export type CreateTodoMutationResult = Apollo.MutationResult<CreateTodoMutation>;
-export type CreateTodoMutationOptions = Apollo.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
-export const DeleteTodoDocument = gql`
-    mutation DeleteTodo($id: ID!) {
-  deleteTodo(id: $id)
+export type CreateVocabularyMutationHookResult = ReturnType<typeof useCreateVocabularyMutation>;
+export type CreateVocabularyMutationResult = Apollo.MutationResult<CreateVocabularyMutation>;
+export type CreateVocabularyMutationOptions = Apollo.BaseMutationOptions<CreateVocabularyMutation, CreateVocabularyMutationVariables>;
+export const DeleteVocabularyDocument = gql`
+    mutation DeleteVocabulary($vocabularies: [String!]!) {
+  deleteVocabularies(vocabularies: $vocabularies)
 }
     `;
-export type DeleteTodoMutationFn = Apollo.MutationFunction<DeleteTodoMutation, DeleteTodoMutationVariables>;
+export type DeleteVocabularyMutationFn = Apollo.MutationFunction<DeleteVocabularyMutation, DeleteVocabularyMutationVariables>;
 
 /**
- * __useDeleteTodoMutation__
+ * __useDeleteVocabularyMutation__
  *
- * To run a mutation, you first call `useDeleteTodoMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteTodoMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteVocabularyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteVocabularyMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteTodoMutation, { data, loading, error }] = useDeleteTodoMutation({
+ * const [deleteVocabularyMutation, { data, loading, error }] = useDeleteVocabularyMutation({
  *   variables: {
- *      id: // value for 'id'
+ *      vocabularies: // value for 'vocabularies'
  *   },
  * });
  */
-export function useDeleteTodoMutation(baseOptions?: Apollo.MutationHookOptions<DeleteTodoMutation, DeleteTodoMutationVariables>) {
+export function useDeleteVocabularyMutation(baseOptions?: Apollo.MutationHookOptions<DeleteVocabularyMutation, DeleteVocabularyMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeleteTodoMutation, DeleteTodoMutationVariables>(DeleteTodoDocument, options);
+        return Apollo.useMutation<DeleteVocabularyMutation, DeleteVocabularyMutationVariables>(DeleteVocabularyDocument, options);
       }
-export type DeleteTodoMutationHookResult = ReturnType<typeof useDeleteTodoMutation>;
-export type DeleteTodoMutationResult = Apollo.MutationResult<DeleteTodoMutation>;
-export type DeleteTodoMutationOptions = Apollo.BaseMutationOptions<DeleteTodoMutation, DeleteTodoMutationVariables>;
-export const ToggleTodoDocument = gql`
-    mutation ToggleTodo($id: ID!) {
-  toggleTodo(id: $id)
+export type DeleteVocabularyMutationHookResult = ReturnType<typeof useDeleteVocabularyMutation>;
+export type DeleteVocabularyMutationResult = Apollo.MutationResult<DeleteVocabularyMutation>;
+export type DeleteVocabularyMutationOptions = Apollo.BaseMutationOptions<DeleteVocabularyMutation, DeleteVocabularyMutationVariables>;
+export const ToggleVocabularyMarkDocument = gql`
+    mutation ToggleVocabularyMark($en: String!) {
+  toggleVocabularyMark(en: $en)
 }
     `;
-export type ToggleTodoMutationFn = Apollo.MutationFunction<ToggleTodoMutation, ToggleTodoMutationVariables>;
+export type ToggleVocabularyMarkMutationFn = Apollo.MutationFunction<ToggleVocabularyMarkMutation, ToggleVocabularyMarkMutationVariables>;
 
 /**
- * __useToggleTodoMutation__
+ * __useToggleVocabularyMarkMutation__
  *
- * To run a mutation, you first call `useToggleTodoMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useToggleTodoMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useToggleVocabularyMarkMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useToggleVocabularyMarkMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [toggleTodoMutation, { data, loading, error }] = useToggleTodoMutation({
+ * const [toggleVocabularyMarkMutation, { data, loading, error }] = useToggleVocabularyMarkMutation({
  *   variables: {
- *      id: // value for 'id'
+ *      en: // value for 'en'
  *   },
  * });
  */
-export function useToggleTodoMutation(baseOptions?: Apollo.MutationHookOptions<ToggleTodoMutation, ToggleTodoMutationVariables>) {
+export function useToggleVocabularyMarkMutation(baseOptions?: Apollo.MutationHookOptions<ToggleVocabularyMarkMutation, ToggleVocabularyMarkMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ToggleTodoMutation, ToggleTodoMutationVariables>(ToggleTodoDocument, options);
+        return Apollo.useMutation<ToggleVocabularyMarkMutation, ToggleVocabularyMarkMutationVariables>(ToggleVocabularyMarkDocument, options);
       }
-export type ToggleTodoMutationHookResult = ReturnType<typeof useToggleTodoMutation>;
-export type ToggleTodoMutationResult = Apollo.MutationResult<ToggleTodoMutation>;
-export type ToggleTodoMutationOptions = Apollo.BaseMutationOptions<ToggleTodoMutation, ToggleTodoMutationVariables>;
-export const UpdateTodoDocument = gql`
-    mutation UpdateTodo($id: ID!, $title: String!, $content: String!) {
-  updateTodo(id: $id, title: $title, content: $content) {
-    id
-    title
-    content
-    isDone
+export type ToggleVocabularyMarkMutationHookResult = ReturnType<typeof useToggleVocabularyMarkMutation>;
+export type ToggleVocabularyMarkMutationResult = Apollo.MutationResult<ToggleVocabularyMarkMutation>;
+export type ToggleVocabularyMarkMutationOptions = Apollo.BaseMutationOptions<ToggleVocabularyMarkMutation, ToggleVocabularyMarkMutationVariables>;
+export const UpdateVocabularyDocument = gql`
+    mutation UpdateVocabulary($en: String!, $ch: String!, $sentence: String!) {
+  updateVocabulary(en: $en, ch: $ch, sentence: $sentence) {
+    en
+    ch
+    sentence
+    isMarked
+    counter
     createAt
     updateAt
   }
 }
     `;
-export type UpdateTodoMutationFn = Apollo.MutationFunction<UpdateTodoMutation, UpdateTodoMutationVariables>;
+export type UpdateVocabularyMutationFn = Apollo.MutationFunction<UpdateVocabularyMutation, UpdateVocabularyMutationVariables>;
 
 /**
- * __useUpdateTodoMutation__
+ * __useUpdateVocabularyMutation__
  *
- * To run a mutation, you first call `useUpdateTodoMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateTodoMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useUpdateVocabularyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateVocabularyMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateTodoMutation, { data, loading, error }] = useUpdateTodoMutation({
+ * const [updateVocabularyMutation, { data, loading, error }] = useUpdateVocabularyMutation({
  *   variables: {
- *      id: // value for 'id'
- *      title: // value for 'title'
- *      content: // value for 'content'
+ *      en: // value for 'en'
+ *      ch: // value for 'ch'
+ *      sentence: // value for 'sentence'
  *   },
  * });
  */
-export function useUpdateTodoMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTodoMutation, UpdateTodoMutationVariables>) {
+export function useUpdateVocabularyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateVocabularyMutation, UpdateVocabularyMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateTodoMutation, UpdateTodoMutationVariables>(UpdateTodoDocument, options);
+        return Apollo.useMutation<UpdateVocabularyMutation, UpdateVocabularyMutationVariables>(UpdateVocabularyDocument, options);
       }
-export type UpdateTodoMutationHookResult = ReturnType<typeof useUpdateTodoMutation>;
-export type UpdateTodoMutationResult = Apollo.MutationResult<UpdateTodoMutation>;
-export type UpdateTodoMutationOptions = Apollo.BaseMutationOptions<UpdateTodoMutation, UpdateTodoMutationVariables>;
-export const TodoDocument = gql`
-    query Todo($id: ID!) {
-  todo(id: $id) {
-    id
-    title
-    content
-    isDone
+export type UpdateVocabularyMutationHookResult = ReturnType<typeof useUpdateVocabularyMutation>;
+export type UpdateVocabularyMutationResult = Apollo.MutationResult<UpdateVocabularyMutation>;
+export type UpdateVocabularyMutationOptions = Apollo.BaseMutationOptions<UpdateVocabularyMutation, UpdateVocabularyMutationVariables>;
+export const VocabulariesDocument = gql`
+    query Vocabularies {
+  vocabularies {
+    en
+    ch
+    sentence
+    isMarked
+    counter
     createAt
     updateAt
   }
@@ -304,39 +275,39 @@ export const TodoDocument = gql`
     `;
 
 /**
- * __useTodoQuery__
+ * __useVocabulariesQuery__
  *
- * To run a query within a React component, call `useTodoQuery` and pass it any options that fit your needs.
- * When your component renders, `useTodoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useVocabulariesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVocabulariesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTodoQuery({
+ * const { data, loading, error } = useVocabulariesQuery({
  *   variables: {
- *      id: // value for 'id'
  *   },
  * });
  */
-export function useTodoQuery(baseOptions: Apollo.QueryHookOptions<TodoQuery, TodoQueryVariables>) {
+export function useVocabulariesQuery(baseOptions?: Apollo.QueryHookOptions<VocabulariesQuery, VocabulariesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TodoQuery, TodoQueryVariables>(TodoDocument, options);
+        return Apollo.useQuery<VocabulariesQuery, VocabulariesQueryVariables>(VocabulariesDocument, options);
       }
-export function useTodoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TodoQuery, TodoQueryVariables>) {
+export function useVocabulariesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VocabulariesQuery, VocabulariesQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TodoQuery, TodoQueryVariables>(TodoDocument, options);
+          return Apollo.useLazyQuery<VocabulariesQuery, VocabulariesQueryVariables>(VocabulariesDocument, options);
         }
-export type TodoQueryHookResult = ReturnType<typeof useTodoQuery>;
-export type TodoLazyQueryHookResult = ReturnType<typeof useTodoLazyQuery>;
-export type TodoQueryResult = Apollo.QueryResult<TodoQuery, TodoQueryVariables>;
-export const TodosDocument = gql`
-    query Todos {
-  todos {
-    id
-    title
-    content
-    isDone
+export type VocabulariesQueryHookResult = ReturnType<typeof useVocabulariesQuery>;
+export type VocabulariesLazyQueryHookResult = ReturnType<typeof useVocabulariesLazyQuery>;
+export type VocabulariesQueryResult = Apollo.QueryResult<VocabulariesQuery, VocabulariesQueryVariables>;
+export const VocabularyDocument = gql`
+    query Vocabulary($en: String!) {
+  vocabulary(en: $en) {
+    en
+    ch
+    sentence
+    isMarked
+    counter
     createAt
     updateAt
   }
@@ -344,28 +315,29 @@ export const TodosDocument = gql`
     `;
 
 /**
- * __useTodosQuery__
+ * __useVocabularyQuery__
  *
- * To run a query within a React component, call `useTodosQuery` and pass it any options that fit your needs.
- * When your component renders, `useTodosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useVocabularyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVocabularyQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTodosQuery({
+ * const { data, loading, error } = useVocabularyQuery({
  *   variables: {
+ *      en: // value for 'en'
  *   },
  * });
  */
-export function useTodosQuery(baseOptions?: Apollo.QueryHookOptions<TodosQuery, TodosQueryVariables>) {
+export function useVocabularyQuery(baseOptions: Apollo.QueryHookOptions<VocabularyQuery, VocabularyQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TodosQuery, TodosQueryVariables>(TodosDocument, options);
+        return Apollo.useQuery<VocabularyQuery, VocabularyQueryVariables>(VocabularyDocument, options);
       }
-export function useTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TodosQuery, TodosQueryVariables>) {
+export function useVocabularyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VocabularyQuery, VocabularyQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TodosQuery, TodosQueryVariables>(TodosDocument, options);
+          return Apollo.useLazyQuery<VocabularyQuery, VocabularyQueryVariables>(VocabularyDocument, options);
         }
-export type TodosQueryHookResult = ReturnType<typeof useTodosQuery>;
-export type TodosLazyQueryHookResult = ReturnType<typeof useTodosLazyQuery>;
-export type TodosQueryResult = Apollo.QueryResult<TodosQuery, TodosQueryVariables>;
+export type VocabularyQueryHookResult = ReturnType<typeof useVocabularyQuery>;
+export type VocabularyLazyQueryHookResult = ReturnType<typeof useVocabularyLazyQuery>;
+export type VocabularyQueryResult = Apollo.QueryResult<VocabularyQuery, VocabularyQueryVariables>;

@@ -1,3 +1,3 @@
-# Todo List
+# English Note
 
-Just a normal todolist project
+It;s a simple english note application.

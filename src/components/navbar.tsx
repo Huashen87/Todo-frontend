@@ -8,7 +8,7 @@ function NavBar() {
         <Menu.Menu position="left">
           <Menu.Item active={true} as={Link} to="/">
             <Icon name="checkmark box" />
-            Todos
+            Vocabulary Book
           </Menu.Item>
         </Menu.Menu>
       </Menu>

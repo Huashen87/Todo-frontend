@@ -1,3 +1,0 @@
-mutation ToggleTodo($id: ID!) {
-  toggleTodo(id: $id)
-}

@@ -1,0 +1,11 @@
+query Vocabulary($en: String!) {
+  vocabulary(en: $en) {
+    en
+    ch
+    sentence
+    isMarked
+    counter
+    createAt
+    updateAt
+  }
+}

@@ -1,0 +1,11 @@
+query Vocabularies {
+  vocabularies {
+    en
+    ch
+    sentence
+    isMarked
+    counter
+    createAt
+    updateAt
+  }
+}
